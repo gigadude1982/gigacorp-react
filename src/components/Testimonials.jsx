@@ -32,7 +32,7 @@ export default function Testimonials() {
             <span className="text-xs font-semibold text-brand-400 uppercase tracking-widest">Client Voices</span>
           </div>
           <h2 className="font-display font-bold text-4xl md:text-5xl text-white">
-            Don't take our word for it
+            Don&apos;t take our word for it
           </h2>
         </div>
 
@@ -50,7 +50,7 @@ export default function Testimonials() {
               </div>
 
               <blockquote className="text-white/65 text-sm leading-relaxed flex-1 mb-6">
-                "{t.quote}"
+                &ldquo;{t.quote}&rdquo;
               </blockquote>
 
               <div className="flex items-center gap-3">

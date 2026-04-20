@@ -49,7 +49,7 @@ export default function Portfolio() {
             </h2>
           </div>
           <p className="text-white/50 max-w-sm md:text-right">
-            A selection of projects that define what's possible when ambition meets execution.
+            A selection of projects that define what&apos;s possible when ambition meets execution.
           </p>
         </div>
 

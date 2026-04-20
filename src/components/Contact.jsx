@@ -31,12 +31,12 @@ export default function Contact() {
               <span className="text-xs font-semibold text-brand-400 uppercase tracking-widest">Get In Touch</span>
             </div>
             <h2 className="font-display font-bold text-4xl md:text-5xl text-white leading-tight mb-6">
-              Let's build
+              Let&apos;s build
               <br />
               <span className="text-gradient">something great</span>
             </h2>
             <p className="text-white/50 text-base leading-relaxed mb-10">
-              Whether you're ready to kick off a project or just exploring possibilities, our team is here to help you find the right path forward.
+              Whether you&apos;re ready to kick off a project or just exploring possibilities, our team is here to help you find the right path forward.
             </p>
 
             {/* Contact info */}
@@ -94,7 +94,7 @@ export default function Contact() {
                   </svg>
                 </div>
                 <h3 className="font-display font-bold text-xl text-white mb-2">Message received!</h3>
-                <p className="text-white/50 text-sm">We'll be in touch within 1 business day.</p>
+                <p className="text-white/50 text-sm">We&apos;ll be in touch within 1 business day.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
