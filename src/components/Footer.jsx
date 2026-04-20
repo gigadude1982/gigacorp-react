@@ -91,7 +91,7 @@ export default function Footer() {
             © {new Date().getFullYear()} GigaCorp, Inc. All rights reserved.
           </p>
           <p className="text-white/20 text-sm">
-            www.gigacorp.co
+            www.gigacorp.co — v{__APP_VERSION__}
           </p>
         </div>
       </div>
