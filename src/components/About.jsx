@@ -28,7 +28,7 @@ export default function About() {
               <span className="text-xs font-semibold text-brand-400 uppercase tracking-widest">About GigaCorp</span>
             </div>
             <h2 className="font-display font-bold text-4xl md:text-5xl text-white leading-tight mb-6">
-              We're the team
+              We&apos;re the team
               <br />
               <span className="text-gradient">the best companies</span>
               <br />
