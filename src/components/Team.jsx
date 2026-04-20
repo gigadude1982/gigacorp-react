@@ -62,7 +62,7 @@ export default function Team() {
             World-class people
           </h2>
           <p className="text-white/50 text-lg max-w-lg mx-auto">
-            Our leadership team brings together decades of experience from the world's most respected technology organizations.
+            Our leadership team brings together decades of experience from the world&apos;s most respected technology organizations.
           </p>
         </div>
 
