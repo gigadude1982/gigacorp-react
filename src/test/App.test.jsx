@@ -2,52 +2,133 @@ import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import App from '../App'
 
-// Import the team data directly from the component file for data-level assertions.
-// Since the team array is not exported separately, we test it via the rendered UI.
-// We also test structural expectations about the data by inspecting the component module.
-
-describe('App', () => {
-  it('renders without crashing', () => {
+// ---------------------------------------------------------------------------
+// Suite 1 – Basic rendering
+// ---------------------------------------------------------------------------
+describe('App – basic rendering', () => {
+  it('renders without crashing and mounts a <main> element', () => {
     render(<App />)
     expect(document.querySelector('main')).toBeInTheDocument()
   })
 })
 
-describe('Team data – CEO phone number', () => {
-  it('CEO entry phone number field equals "+1720.528.8910" in the source data', async () => {
-    // Dynamically import the component module to inspect the inline team array.
-    // The team array is defined at module scope inside Team.jsx.
-    const moduleText = await import('../components/Team.jsx?raw').then(
-      (m) => m.default,
-      // Fallback: if Vite raw imports are unavailable, skip to UI test.
-      () => null
-    )
-
-    if (moduleText !== null) {
-      // Verify the CEO entry contains the required phone number as a literal string.
-      expect(moduleText).toContain("'+1720.528.8910'")
-    } else {
-      // If raw import is not available, this sub-check is covered by the UI test below.
-      expect(true).toBe(true)
-    }
+// ---------------------------------------------------------------------------
+// Suite 2 – CEO name: acceptance criteria
+// ---------------------------------------------------------------------------
+describe('CEO name – Dalton B. Mangrum', () => {
+  it('displays "Dalton B. Mangrum" in the rendered output', () => {
+    render(<App />)
+    expect(screen.getByText('Dalton B. Mangrum')).toBeInTheDocument()
   })
 
-  it('CEO phone number "+1720.528.8910" is rendered in the UI', () => {
+  it('does NOT display "Alexandra Chen" anywhere in the rendered output', () => {
     render(<App />)
-    // The phone number must appear somewhere in the document.
-    expect(screen.getByText('+1720.528.8910')).toBeInTheDocument()
+    expect(screen.queryByText('Alexandra Chen')).not.toBeInTheDocument()
   })
 
-  it('CEO phone number is associated with the Chief Executive Officer entry', () => {
+  it('shows "Dalton B. Mangrum" as the Chief Executive Officer', () => {
     render(<App />)
-    // Confirm the CEO role label is present.
-    expect(screen.getByText('Chief Executive Officer')).toBeInTheDocument()
-    // Confirm the phone number is present in the same document.
-    expect(screen.getByText('+1720.528.8910')).toBeInTheDocument()
+    const nameEl = screen.getByText('Dalton B. Mangrum')
+    // The name and role live inside the same card container
+    const card = nameEl.closest('div')
+    expect(card).not.toBeNull()
+    expect(card.textContent).toContain('Chief Executive Officer')
   })
 })
 
-describe('Team data – other members phone numbers not altered', () => {
+// ---------------------------------------------------------------------------
+// Suite 3 – CEO LinkedIn URL: acceptance criteria
+// ---------------------------------------------------------------------------
+describe('CEO LinkedIn URL', () => {
+  it('renders an anchor with href "https://www.linkedin.com/in/daltonmangrum"', () => {
+    render(<App />)
+    const link = document.querySelector(
+      'a[href="https://www.linkedin.com/in/daltonmangrum"]'
+    )
+    expect(link).not.toBeNull()
+    expect(link).toBeInTheDocument()
+  })
+
+  it('the LinkedIn anchor is associated with the CEO card', () => {
+    render(<App />)
+    const nameEl = screen.getByText('Dalton B. Mangrum')
+    const card = nameEl.closest('div')
+    const link = card
+      ? card.querySelector('a[href="https://www.linkedin.com/in/daltonmangrum"]')
+      : null
+    expect(link).not.toBeNull()
+  })
+
+  it('no anchor with the old placeholder "#" is the CEO LinkedIn link', () => {
+    render(<App />)
+    // Every LinkedIn anchor inside CEO card must NOT be "#"
+    const nameEl = screen.getByText('Dalton B. Mangrum')
+    const card = nameEl.closest('div')
+    if (card) {
+      const linkedinAnchors = Array.from(card.querySelectorAll('a')).filter(
+        (a) => a.textContent.trim() === 'LinkedIn'
+      )
+      linkedinAnchors.forEach((a) => {
+        expect(a.getAttribute('href')).not.toBe('#')
+      })
+    }
+  })
+})
+
+// ---------------------------------------------------------------------------
+// Suite 4 – Teams section: combined name + URL check
+// ---------------------------------------------------------------------------
+describe('Teams section – CEO profile completeness', () => {
+  it('CEO card in Teams section shows new name AND new LinkedIn URL together', () => {
+    render(<App />)
+    const section = document.querySelector('#team')
+    expect(section).not.toBeNull()
+
+    // Name is present inside the section
+    expect(section.textContent).toContain('Dalton B. Mangrum')
+
+    // LinkedIn URL is present inside the section
+    const link = section.querySelector(
+      'a[href="https://www.linkedin.com/in/daltonmangrum"]'
+    )
+    expect(link).not.toBeNull()
+  })
+
+  it('old CEO name "Alexandra Chen" is absent from the Teams section', () => {
+    render(<App />)
+    const section = document.querySelector('#team')
+    expect(section).not.toBeNull()
+    expect(section.textContent).not.toContain('Alexandra Chen')
+  })
+})
+
+// ---------------------------------------------------------------------------
+// Suite 5 – CEO phone number (pre-existing requirement)
+// ---------------------------------------------------------------------------
+describe('CEO phone number', () => {
+  it('renders "+1720.528.8910" in the UI', () => {
+    render(<App />)
+    expect(screen.getByText('+1720.528.8910')).toBeInTheDocument()
+  })
+
+  it('phone number appears exactly once (CEO only)', () => {
+    render(<App />)
+    expect(screen.queryAllByText('+1720.528.8910')).toHaveLength(1)
+  })
+
+  it('phone number lives inside the CEO card alongside "Chief Executive Officer"', () => {
+    render(<App />)
+    const phoneEl = screen.getByText('+1720.528.8910')
+    const card = phoneEl.closest('div')
+    expect(card).not.toBeNull()
+    expect(card.textContent).toContain('Chief Executive Officer')
+  })
+})
+
+// ---------------------------------------------------------------------------
+// Suite 6 – Other team members unaffected
+// ---------------------------------------------------------------------------
+describe('Other team members – unchanged', () => {
   const otherMembers = [
     'Marcus Webb',
     'Priya Sharma',
@@ -63,18 +144,10 @@ describe('Team data – other members phone numbers not altered', () => {
     })
   })
 
-  it('only one instance of "+1720.528.8910" appears in the rendered output (CEO only)', () => {
-    render(<App />)
-    const matches = screen.queryAllByText('+1720.528.8910')
-    // The phone number should appear exactly once — for the CEO.
-    expect(matches).toHaveLength(1)
-  })
-
-  it('no other phone numbers matching the CEO phone appear next to non-CEO member names', () => {
+  it('CEO phone number does not appear in any non-CEO member card', () => {
     render(<App />)
     otherMembers.forEach((name) => {
       const memberEl = screen.getByText(name)
-      // Walk up to the card container and verify CEO phone is not inside it.
       const card = memberEl.closest('[class*="group"]') || memberEl.closest('div')
       if (card) {
         expect(card.textContent).not.toContain('+1720.528.8910')
