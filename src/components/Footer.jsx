@@ -34,6 +34,9 @@ const socials = [
   },
 ]
 
+const appVersion =
+  typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : '0.0.0'
+
 export default function Footer() {
   return (
     <footer className="bg-dark-900 border-t border-white/5">
@@ -52,7 +55,8 @@ export default function Footer() {
               <span className="font-display font-bold text-xl text-white">GigaCorp</span>
             </a>
             <p className="text-white/40 text-sm leading-relaxed max-w-xs mb-6">
-              Enterprise technology solutions for the modern world. Building at scale since 2014.
+              Enterprise technology solutions for the modern world. Building at
+              scale since 2014.
             </p>
             <div className="flex gap-3">
               {socials.map((s) => (
@@ -71,7 +75,9 @@ export default function Footer() {
           {/* Links */}
           {Object.entries(links).map(([heading, items]) => (
             <div key={heading}>
-              <h4 className="text-xs font-semibold text-white/30 uppercase tracking-widest mb-4">{heading}</h4>
+              <h4 className="text-xs font-semibold text-white/30 uppercase tracking-widest mb-4">
+                {heading}
+              </h4>
               <ul className="space-y-2.5">
                 {items.map((item) => (
                   <li key={item}>
@@ -88,10 +94,16 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/30 text-sm">
-            © {new Date().getFullYear()} GigaCorp, Inc. All rights reserved.
+            &copy; {new Date().getFullYear()} GigaCorp, Inc. All rights reserved.
+          </p>
+          <p
+            className="text-white/20 text-xs"
+            data-testid="footer-tagline"
+          >
+            A GigaCorp production
           </p>
           <p className="text-white/20 text-sm">
-            www.gigacorp.co — v{__APP_VERSION__}
+            www.gigacorp.co &mdash; v{appVersion}
           </p>
         </div>
       </div>
