@@ -1,0 +1,12 @@
+{
+  "language": "javascript",
+  "test_framework": "vitest",
+  "test_command": "npm run ci-cd",
+  "coding_standards": "Plain JavaScript/JSX — no TypeScript. React functional components with hooks only. Tailwind CSS for styling — no CSS modules or inline styles. ESLint with eslint-plugin-react and eslint-plugin-react-hooks — lint errors will fail CI. No Prettier configured — match the style of existing files exactly. Tests use vitest and @testing-library/react with jsdom. Test files live alongside source (e.g. src/Foo.test.jsx). The ci-cd script runs: build, then vitest run, then lint — all three must pass.",
+  "source_dirs": ["src"],
+  "test_dirs": ["src"],
+  "max_retries_per_stage": 2,
+  "human_gate_after_planner": true,
+  "branch_prefix": "auto/",
+  "write_tests": false
+}
