@@ -1,7 +1,7 @@
 const values = [
   {
     title: 'Relentless Execution',
-    desc: 'We ship. Every sprint, every milestone, every time. No excuses — just results.',
+    desc: 'We ship. Every sprint, every milestone, every time. No excuses \u2014 just results.',
   },
   {
     title: 'Engineering Excellence',
@@ -13,7 +13,7 @@ const values = [
   },
   {
     title: 'Long-Term Partnership',
-    desc: 'We measure success in years, not projects. Our clients\' outcomes are our outcomes.',
+    desc: "We measure success in years, not projects. Our clients' outcomes are our outcomes.",
   },
 ]
 
@@ -38,7 +38,7 @@ export default function About() {
               Founded in 2014, GigaCorp has grown from a 5-person consultancy into a global technology firm with 800+ engineers, designers, and strategists across 15 offices worldwide.
             </p>
             <p className="text-white/50 text-base leading-relaxed mb-8">
-              We partner with industry leaders — from Series B startups to Fortune 50 enterprises — to solve their most complex technical challenges. Our work spans cloud infrastructure, artificial intelligence, product engineering, and everything in between.
+              We partner with industry leaders \u2014 from Series B startups to Fortune 50 enterprises \u2014 to solve their most complex technical challenges. Our work spans cloud infrastructure, artificial intelligence, product engineering, and everything in between.
             </p>
             <a
               href="#contact"

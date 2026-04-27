@@ -1,9 +1,9 @@
 const team = [
   {
-    name: 'Alexandra Chen',
+    name: 'Dalton B. Mangrum',
     role: 'Chief Executive Officer',
     bio: 'Former VP Engineering at Google. 20 years building and scaling technology organizations.',
-    initials: 'AC',
+    initials: 'DM',
     color: 'from-brand-500 to-purple-600',
     linkedin: '#',
     phone: '+1720.528.8910',
