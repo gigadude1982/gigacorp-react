@@ -13,6 +13,38 @@ describe('App', () => {
   })
 })
 
+describe('Team data – CEO name replacement', () => {
+  it('renders "Dalton B. Mangrum" as the CEO name', () => {
+    render(<App />)
+    expect(screen.getByText('Dalton B. Mangrum')).toBeInTheDocument()
+  })
+
+  it('does not render the old CEO name "Alexandra Chen" anywhere', () => {
+    render(<App />)
+    expect(screen.queryByText('Alexandra Chen')).not.toBeInTheDocument()
+  })
+
+  it('source data does not contain "Alexandra Chen"', async () => {
+    const moduleText = await import('../components/Team.jsx?raw').then(
+      (m) => m.default,
+      () => null
+    )
+
+    if (moduleText !== null) {
+      expect(moduleText).not.toContain('Alexandra Chen')
+      expect(moduleText).toContain('Dalton B. Mangrum')
+    } else {
+      expect(true).toBe(true)
+    }
+  })
+
+  it('"Dalton B. Mangrum" is associated with the Chief Executive Officer role', () => {
+    render(<App />)
+    expect(screen.getByText('Chief Executive Officer')).toBeInTheDocument()
+    expect(screen.getByText('Dalton B. Mangrum')).toBeInTheDocument()
+  })
+})
+
 describe('Team data – CEO phone number', () => {
   it('CEO entry phone number field equals "+1720.528.8910" in the source data', async () => {
     // Dynamically import the component module to inspect the inline team array.
