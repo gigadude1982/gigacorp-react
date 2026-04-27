@@ -5,7 +5,7 @@ const team = [
     bio: 'Former VP Engineering at Google. 20 years building and scaling technology organizations.',
     initials: 'DM',
     color: 'from-brand-500 to-purple-600',
-    linkedin: '#',
+    linkedin: 'https://www.linkedin.com/in/daltonmangrum',
     phone: '+1720.528.8910',
   },
   {
@@ -109,6 +109,8 @@ export default function Team() {
               )}
               <a
                 href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs font-medium text-white/30 hover:text-brand-400 transition-colors"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
