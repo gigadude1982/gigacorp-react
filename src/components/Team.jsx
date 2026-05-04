@@ -2,7 +2,7 @@ const team = [
   {
     name: 'Dalton B. Mangrum',
     role: 'Chief Executive Officer',
-    bio: 'Former VP Engineering at Google. 20 years building and scaling technology organizations.',
+    bio: 'Seasoned software professional with 25 years of experience, spanning multiple industries.',
     initials: 'DM',
     color: 'from-brand-500 to-purple-600',
     linkedin: 'https://www.linkedin.com/in/daltonmangrum',
