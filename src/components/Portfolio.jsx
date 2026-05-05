@@ -31,6 +31,17 @@ const projects = [
     color: 'from-orange-500/20 to-amber-600/20',
     accent: 'text-orange-400',
   },
+  {
+    category: 'Venture Build',
+    title: 'Pitch Vault',
+    desc: 'Built and launched pitchvault.co — a GigaCorp venture empowering founders to craft, store, and share investor-ready pitch decks with AI-assisted feedback.',
+    metrics: ['GigaCorp venture', 'pitchvault.co', 'AI-powered'],
+    color: 'from-violet-500/20 to-indigo-600/20',
+    accent: 'text-violet-400',
+    categoryTestId: 'pitch-vault-category',
+    descTestId: 'pitch-vault-desc',
+    cardTestId: 'pitch-vault-card',
+  },
 ]
 
 export default function Portfolio() {
@@ -58,17 +69,26 @@ export default function Portfolio() {
           {projects.map((p) => (
             <div
               key={p.title}
+              data-testid={p.cardTestId || undefined}
               className={`group relative p-8 rounded-2xl bg-gradient-to-br ${p.color} border border-white/5 hover:border-white/10 transition-all duration-300 overflow-hidden cursor-default`}
             >
               <div className="absolute inset-0 bg-dark-800/60" />
               <div className="relative z-10">
-                <span className={`text-xs font-semibold uppercase tracking-widest ${p.accent} mb-3 block`}>
+                <span
+                  data-testid={p.categoryTestId || undefined}
+                  className={`text-xs font-semibold uppercase tracking-widest ${p.accent} mb-3 block`}
+                >
                   {p.category}
                 </span>
                 <h3 className="font-display font-bold text-xl text-white mb-3 leading-snug">
                   {p.title}
                 </h3>
-                <p className="text-white/50 text-sm leading-relaxed mb-6">{p.desc}</p>
+                <p
+                  data-testid={p.descTestId || undefined}
+                  className="text-white/50 text-sm leading-relaxed mb-6"
+                >
+                  {p.desc}
+                </p>
                 <div className="flex flex-wrap gap-3">
                   {p.metrics.map((m) => (
                     <div key={m} className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/8">
