@@ -33,22 +33,22 @@ describe('ProjectCard', () => {
 
   it('renders an <img> element with correct src and alt when image prop is provided', () => {
     const image = {
-      url: 'https://example.com/project.png',
-      alt: 'Screenshot of the banking platform',
+      url: '/src/assets/images/pitch-vault.png',
+      alt: 'Screenshot of the Pitch Vault application',
       width: 800,
       height: 450,
     }
     render(<ProjectCard {...baseProps} image={image} />)
 
-    const img = screen.getByRole('img', { name: 'Screenshot of the banking platform' })
+    const img = screen.getByRole('img', { name: 'Screenshot of the Pitch Vault application' })
     expect(img).toBeTruthy()
-    expect(img.getAttribute('src')).toBe('https://example.com/project.png')
+    expect(img.getAttribute('src')).toBe('/src/assets/images/pitch-vault.png')
   })
 
   it('applies object-cover class to the <img> element when image is provided', () => {
     const image = {
-      url: 'https://example.com/project.png',
-      alt: 'Screenshot of the banking platform',
+      url: '/src/assets/images/pitch-vault.png',
+      alt: 'Screenshot of the Pitch Vault application',
     }
     render(<ProjectCard {...baseProps} image={image} />)
 
@@ -58,8 +58,8 @@ describe('ProjectCard', () => {
 
   it('applies a responsive aspect-ratio class to the image container when image is provided', () => {
     const image = {
-      url: 'https://example.com/project.png',
-      alt: 'Screenshot of the banking platform',
+      url: '/src/assets/images/pitch-vault.png',
+      alt: 'Screenshot of the Pitch Vault application',
     }
     render(<ProjectCard {...baseProps} image={image} />)
 
@@ -70,8 +70,8 @@ describe('ProjectCard', () => {
 
   it('still renders title, description, and metrics alongside the image', () => {
     const image = {
-      url: 'https://example.com/project.png',
-      alt: 'Screenshot of the banking platform',
+      url: '/src/assets/images/pitch-vault.png',
+      alt: 'Screenshot of the Pitch Vault application',
     }
     render(<ProjectCard {...baseProps} image={image} />)
 
