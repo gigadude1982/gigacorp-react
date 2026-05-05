@@ -1,3 +1,4 @@
+import pitchVaultImg from '../assets/pitch-vault.png'
 import ProjectCard from './ProjectCard/ProjectCard'
 
 const projects = [
@@ -48,6 +49,7 @@ const projects = [
     categoryTestId: 'pitch-vault-category',
     descTestId: 'pitch-vault-desc',
     cardTestId: 'pitch-vault-card',
+    image: { url: pitchVaultImg, alt: 'Pitch Vault' },
   },
 ]
 

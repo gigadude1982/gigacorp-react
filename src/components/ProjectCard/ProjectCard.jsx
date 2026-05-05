@@ -2,15 +2,15 @@ import PropTypes from 'prop-types'
 
 export default function ProjectCard({
   title,
-  description,
-  metrics,
-  color,
-  accent,
-  category,
-  categoryTestId,
-  descTestId,
-  cardTestId,
-  image,
+  description = '',
+  metrics = [],
+  color = '',
+  accent = '',
+  category = '',
+  categoryTestId = undefined,
+  descTestId = undefined,
+  cardTestId = undefined,
+  image = null,
 }) {
   return (
     <div
@@ -20,8 +20,12 @@ export default function ProjectCard({
       <div className="absolute inset-0 bg-dark-800/60" />
       <div className="relative z-10">
         {image && image.url && (
-          <div className="aspect-video w-full mb-4 overflow-hidden rounded-lg">
+          <div
+            data-testid="project-card-image-container"
+            className="aspect-video w-full mb-4 overflow-hidden rounded-lg"
+          >
             <img
+              data-testid="project-card-image"
               src={image.url}
               alt={image.alt || ''}
               width={image.width || undefined}
@@ -74,16 +78,4 @@ ProjectCard.propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
   }),
-}
-
-ProjectCard.defaultProps = {
-  description: '',
-  metrics: [],
-  color: '',
-  accent: '',
-  category: '',
-  categoryTestId: undefined,
-  descTestId: undefined,
-  cardTestId: undefined,
-  image: null,
 }

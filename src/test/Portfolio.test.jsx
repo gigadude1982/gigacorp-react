@@ -30,4 +30,27 @@ describe('Portfolio - Pitch Vault card', () => {
     const desc = within(card).getByTestId('pitch-vault-desc')
     expect(desc).toBeTruthy()
   })
+
+  it('renders an <img> element inside the Pitch Vault card', () => {
+    render(<Portfolio />)
+    const card = screen.getByTestId('pitch-vault-card')
+    const img = within(card).getByRole('img')
+    expect(img).toBeTruthy()
+    expect(img.getAttribute('src')).toBeTruthy()
+  })
+
+  it('Pitch Vault card image has object-cover class', () => {
+    render(<Portfolio />)
+    const card = screen.getByTestId('pitch-vault-card')
+    const img = within(card).getByRole('img')
+    expect(img.className).toMatch(/object-cover/)
+  })
+
+  it('Pitch Vault card image is wrapped in an aspect-ratio container', () => {
+    render(<Portfolio />)
+    const card = screen.getByTestId('pitch-vault-card')
+    const img = within(card).getByRole('img')
+    const container = img.parentElement
+    expect(container.className).toMatch(/aspect-/)
+  })
 })
