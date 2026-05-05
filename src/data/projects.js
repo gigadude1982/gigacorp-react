@@ -1,8 +1,10 @@
+import pitchVaultImage from '../assets/images/pitch-vault.png'
+
 const projects = [
   {
     category: 'Cloud Migration',
     title: 'Global Banking Platform Overhaul',
-    desc: 'Migrated a $20B financial institution\'s legacy on-premise infrastructure to a fully cloud-native architecture, reducing operational costs by 42%.',
+    desc: "Migrated a $20B financial institution's legacy on-premise infrastructure to a fully cloud-native architecture, reducing operational costs by 42%.",
     metrics: ['42% cost reduction', '99.99% uptime', '3.2M daily users'],
     color: 'from-brand-500/20 to-purple-600/20',
     accent: 'text-brand-400',
@@ -38,6 +40,12 @@ const projects = [
     metrics: ['0 to launch', 'Founder-focused', 'pitchvault.co'],
     color: 'from-violet-500/20 to-indigo-600/20',
     accent: 'text-violet-400',
+    image: {
+      url: pitchVaultImage,
+      alt: 'Pitch Vault — investor-ready pitch deck platform',
+      width: 800,
+      height: 450,
+    },
     cardTestId: 'pitch-vault-card',
     categoryTestId: 'pitch-vault-category',
     descTestId: 'pitch-vault-desc',
