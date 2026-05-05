@@ -31,7 +31,7 @@ describe('Portfolio - Pitch Vault card', () => {
     expect(desc).toBeTruthy()
   })
 
-  it('renders an <img> element inside the Pitch Vault card', () => {
+  it('renders an img element inside the Pitch Vault card', () => {
     render(<Portfolio />)
     const card = screen.getByTestId('pitch-vault-card')
     const img = within(card).getByRole('img')
@@ -46,7 +46,7 @@ describe('Portfolio - Pitch Vault card', () => {
     expect(img.className).toMatch(/object-cover/)
   })
 
-  it('Pitch Vault card image is wrapped in an aspect-ratio container', () => {
+  it('Pitch Vault card image container has an aspect-ratio class', () => {
     render(<Portfolio />)
     const card = screen.getByTestId('pitch-vault-card')
     const img = within(card).getByRole('img')

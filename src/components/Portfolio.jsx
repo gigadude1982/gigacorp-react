@@ -1,5 +1,5 @@
-import pitchVaultImg from '../assets/pitch-vault.png'
 import ProjectCard from './ProjectCard/ProjectCard'
+import pitchVaultImg from '../assets/pitch-vault.png'
 
 const projects = [
   {
