@@ -1,8 +1,11 @@
+import ProjectCard from './ProjectCard/ProjectCard'
+
 const projects = [
   {
     category: 'Cloud Migration',
     title: 'Global Banking Platform Overhaul',
-    desc: 'Migrated a $20B financial institution\'s legacy on-premise infrastructure to a fully cloud-native architecture, reducing operational costs by 42%.',
+    description:
+      "Migrated a $20B financial institution's legacy on-premise infrastructure to a fully cloud-native architecture, reducing operational costs by 42%.",
     metrics: ['42% cost reduction', '99.99% uptime', '3.2M daily users'],
     color: 'from-brand-500/20 to-purple-600/20',
     accent: 'text-brand-400',
@@ -10,7 +13,8 @@ const projects = [
   {
     category: 'AI / ML',
     title: 'Predictive Supply Chain Engine',
-    desc: 'Built a real-time ML platform for a Fortune 100 retailer to forecast demand, optimize inventory, and prevent $180M in annual stock-out losses.',
+    description:
+      'Built a real-time ML platform for a Fortune 100 retailer to forecast demand, optimize inventory, and prevent $180M in annual stock-out losses.',
     metrics: ['$180M savings', '94% accuracy', '12ms latency'],
     color: 'from-emerald-500/20 to-teal-600/20',
     accent: 'text-emerald-400',
@@ -18,7 +22,8 @@ const projects = [
   {
     category: 'Product Engineering',
     title: 'Health & Wellness Super App',
-    desc: 'Designed and shipped a cross-platform health application from 0 to 2M users in 8 months, integrating with 60+ medical devices and EHR systems.',
+    description:
+      'Designed and shipped a cross-platform health application from 0 to 2M users in 8 months, integrating with 60+ medical devices and EHR systems.',
     metrics: ['2M users in 8mo', '60+ integrations', '4.9 App Store rating'],
     color: 'from-pink-500/20 to-rose-600/20',
     accent: 'text-pink-400',
@@ -26,7 +31,8 @@ const projects = [
   {
     category: 'Data & Analytics',
     title: 'Real-Time Media Analytics Hub',
-    desc: 'Engineered a streaming analytics platform for a global media company processing 500B events per day, powering personalization and ad-targeting.',
+    description:
+      'Engineered a streaming analytics platform for a global media company processing 500B events per day, powering personalization and ad-targeting.',
     metrics: ['500B events/day', '40ms p99 latency', '$220M ad revenue'],
     color: 'from-orange-500/20 to-amber-600/20',
     accent: 'text-orange-400',
@@ -34,7 +40,8 @@ const projects = [
   {
     category: 'Venture Build',
     title: 'Pitch Vault',
-    desc: 'Built and launched pitchvault.co — a GigaCorp venture empowering founders to craft, store, and share investor-ready pitch decks with AI-assisted feedback.',
+    description:
+      'Built and launched pitchvault.co \u2014 a GigaCorp venture empowering founders to craft, store, and share investor-ready pitch decks with AI-assisted feedback.',
     metrics: ['GigaCorp venture', 'pitchvault.co', 'AI-powered'],
     color: 'from-violet-500/20 to-indigo-600/20',
     accent: 'text-violet-400',
@@ -67,37 +74,19 @@ export default function Portfolio() {
         {/* Projects */}
         <div className="grid md:grid-cols-2 gap-5">
           {projects.map((p) => (
-            <div
+            <ProjectCard
               key={p.title}
-              data-testid={p.cardTestId || undefined}
-              className={`group relative p-8 rounded-2xl bg-gradient-to-br ${p.color} border border-white/5 hover:border-white/10 transition-all duration-300 overflow-hidden cursor-default`}
-            >
-              <div className="absolute inset-0 bg-dark-800/60" />
-              <div className="relative z-10">
-                <span
-                  data-testid={p.categoryTestId || undefined}
-                  className={`text-xs font-semibold uppercase tracking-widest ${p.accent} mb-3 block`}
-                >
-                  {p.category}
-                </span>
-                <h3 className="font-display font-bold text-xl text-white mb-3 leading-snug">
-                  {p.title}
-                </h3>
-                <p
-                  data-testid={p.descTestId || undefined}
-                  className="text-white/50 text-sm leading-relaxed mb-6"
-                >
-                  {p.desc}
-                </p>
-                <div className="flex flex-wrap gap-3">
-                  {p.metrics.map((m) => (
-                    <div key={m} className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/8">
-                      <span className="text-xs font-semibold text-white/70">{m}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+              category={p.category}
+              title={p.title}
+              description={p.description}
+              metrics={p.metrics}
+              color={p.color}
+              accent={p.accent}
+              image={p.image || null}
+              cardTestId={p.cardTestId || undefined}
+              categoryTestId={p.categoryTestId || undefined}
+              descTestId={p.descTestId || undefined}
+            />
           ))}
         </div>
 
